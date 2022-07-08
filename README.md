@@ -67,8 +67,7 @@ ca.crt:     1460 bytes
 记住这里的token，即ServiceAccount Token
 
 去ACK集群管理页面查看管理URL
-![](https://gw.alipayobjects.com/zos/antfincdn/zu5J%24LJGy/ee9b75b5-7665-4a7c-8254-316bfa0c37e9.png)
-
+![](https://gw.alipayobjects.com/zos/antfincdn/%26elIw7tLX/99b9a1b2-22d5-4ad1-aaa0-d2d0aa99053a.png)
 ```java
 public class Main {
     public static void main(String[] args) {
@@ -90,3 +89,4 @@ public class Main {
 }
 ```
 
+![](https://gw.alipayobjects.com/zos/antfincdn/lRPsjE7SB/41f93ee9-d438-431d-8dcb-e0217b21543b.png)
