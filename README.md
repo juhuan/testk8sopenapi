@@ -1,5 +1,4 @@
-k8s-admin.yaml
-
+创建`k8s-admin.yaml`
 ```yaml
 ---
 apiVersion: v1
@@ -22,12 +21,14 @@ roleRef:
   apiGroup: rbac.authorization.k8s.io
 ```
 
+创建`ServiceAccount`和`ClusterRoleBinding`
 ```bash
 shell@Alicloud:~$ kubectl apply -f k8s-admin.yaml 
 serviceaccount/dashboard-admin created
 clusterrolebinding.rbac.authorization.k8s.io/dashboard-admin created
 ```
 
+查看`ServiceAccount Secret`
 ```bash
 shell@Alicloud:~$ kubectl -n kube-system get sa dashboard-admin -o yaml
 apiVersion: v1
@@ -45,6 +46,7 @@ secrets:
 - name: dashboard-admin-token-lt962
 ```
 
+查看`ServiceAccount Token`
 ```bash
 shell@Alicloud:~$ kubectl describe secret dashboard-admin-token-lt962 -n kube-system
 Name:         dashboard-admin-token-lt962
@@ -62,7 +64,7 @@ token:      eyJhbGciOixxxxxxxxxxxxxxxxxxxxxxx
 ca.crt:     1460 bytes
 ```
 
-记住这里的token，即ServiceAccount Secret
+记住这里的token，即ServiceAccount Token
 
 去ACK集群管理页面查看管理URL
 ![](https://gw.alipayobjects.com/zos/antfincdn/zu5J%24LJGy/ee9b75b5-7665-4a7c-8254-316bfa0c37e9.png)
@@ -70,7 +72,7 @@ ca.crt:     1460 bytes
 ```java
 public class Main {
     public static void main(String[] args) {
-        String base64Token = "<<填写ServiceAccount Secret>>";
+        String base64Token = "<<填写ServiceAccount Token>>";
         String masterUrl = "<<填写K8S管理URL>>";
         Config config = new ConfigBuilder()
                 .withTrustCerts(true)
